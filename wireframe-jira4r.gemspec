@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
      "regen.sh",
      "test/helper.rb",
      "test/test_jira4r.rb",
+     "wireframe-jira4r.gemspec",
      "wsdl/jirasoapservice-v2.wsdl"
   ]
   s.homepage = %q{http://github.com/aerickson/jira4r}
