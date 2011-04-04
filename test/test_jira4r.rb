@@ -1,4 +1,3 @@
-
 require 'helper'
 
 class TestJira4r < Test::Unit::TestCase

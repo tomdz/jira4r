@@ -1,25 +1,15 @@
-require 'rubygems'
-require 'rake'
+require 'bundler'
+Bundler.setup
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "wireframe-jira4r"
-    gem.summary = %Q{JIRA Soap Interface Gem}
-    gem.description = %Q{JIRA Soap Interface Gem}
-    gem.email = "andrew@twitter.com"
-    gem.homepage = "http://github.com/aerickson/jira4r"
-    gem.authors = ["James Stuart", "Andrew Erickson", "Andrew Cantino", "Ryan Sonnek"]
-    gem.add_runtime_dependency "soap4r", ">= 0"
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
+require 'rake'
+require 'rake/testtask'
+require 'rake/rdoctask'
+
+task :gem => :build
+task :build do
+  system 'gem build jira4r.gemspec'
 end
 
-require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
   test.pattern = 'test/**/test_*.rb'
@@ -39,10 +29,6 @@ rescue LoadError
   end
 end
 
-task :test => :check_dependencies
-
-task :default => :test
-
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
@@ -52,3 +38,5 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+task :default => :test

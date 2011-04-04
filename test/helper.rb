@@ -1,5 +1,3 @@
-require 'rubygems'
-gem "soap4r"
 require 'test/unit'
 require 'shoulda'
 
