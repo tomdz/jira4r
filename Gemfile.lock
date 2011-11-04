@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    jira4r (0.5.0)
-      rubyjedi-soap4r
+    tomdz-jira4r (0.5.0)
+      tomdz-soap4r (>= 1.5.8)
 
 GEM
   remote: http://rubygems.org/
@@ -12,19 +12,19 @@ GEM
     jruby-openssl (0.7.3)
       bouncy-castle-java
     rake (0.8.7)
-    rubyjedi-soap4r (1.5.8.20100619003610)
-      httpclient (~> 2.1.5.2)
     shoulda (2.11.3)
     thoughtbot-shoulda (2.11.1)
+    tomdz-soap4r (1.5.8.20111103171510)
+      httpclient (>= 2.1.5.2)
 
 PLATFORMS
   java
   ruby
 
 DEPENDENCIES
-  jira4r!
   jruby-openssl
   rake
-  rubyjedi-soap4r
   shoulda
   thoughtbot-shoulda
+  tomdz-jira4r!
+  tomdz-soap4r

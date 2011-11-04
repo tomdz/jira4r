@@ -1,6 +1,11 @@
 = jira4r
 
-Description goes here.
+This is a fork of the https://github.com/tritonrc/jira4r jira4r fork that differs from it in two important points:
+
+* It has a gem available on http://rubygems.org.
+* It uses tomdz-soap4r which also has a gem available on http://rubygems.org and relaxes the version constraint on its httpclient dependency.
+
+Original readme below:
 
 == Note on Patches/Pull Requests
  

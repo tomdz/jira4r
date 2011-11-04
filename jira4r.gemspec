@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
-  s.name = %q{jira4r}
+  s.name = %q{tomdz-jira4r}
   s.version = "0.5.0"
   s.platform = Gem::Platform::RUBY
   s.authors = ["James Stuart", "Andrew Erickson", "Andrew Cantino", "Ryan Sonnek", "Brian McKinney"]
-  s.email = %q{tritonrc@gmail.com}
-  s.homepage = %q{http://github.com/tritonrc/jira4r}
+  s.email = %q{tomdzk@gmail.com, tritonrc@gmail.com}
+  s.homepage = %q{https://github.com/tomdz/jira4r}
   s.date = %q{2011-04-04}
   s.description = %q{JIRA Soap Interface Gem}
   s.summary = %q{JIRA4R is a convenient to access and maninpulate JIRA from Ruby}
@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
      "test/test_jira4r.rb"
   ]
 
-  s.add_dependency(%q<rubyjedi-soap4r>, [">= 0"])
+  s.add_dependency(%q<tomdz-soap4r>, [">= 1.5.8"])
   s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
 end
 

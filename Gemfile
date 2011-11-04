@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 gemspec
 
-gem 'rubyjedi-soap4r' # Fork that supports Ruby 1.9 and JRuby
+gem 'tomdz-soap4r' # Fork that supports Ruby 1.9 and JRuby
 
 platform :jruby do
   gem 'jruby-openssl'
