@@ -50,10 +50,10 @@ module Jira4R
     #Retrieve the driver, creating as required.
     def driver()
       if not @driver
-        @logger.info( "Connecting driver to #{@endpoint_url}" )
+        @logger.info("Connecting driver to #{@endpoint_url}")
 
         service_classname = "Jira4R::V#{@version}::JiraSoapService"
-        puts "Service: #{service_classname}"
+        @logger.debug("Service: #{service_classname}")
         service = eval(service_classname)
         @driver = service.send(:new, @endpoint_url)
 
@@ -98,7 +98,7 @@ module Jira4R
     #This will be significantly faster for larger Jira installations.
     #See: JRA-10660
     def getProjectNoScheme(key)
-      puts "getProjectNoScheme is deprecated. Please call getProjectNoSchemes."
+      @logger.warn("getProjectNoScheme is deprecated. Please call getProjectNoSchemes.")
       getProjectNoSchemes(key)
     end
     
@@ -108,7 +108,7 @@ module Jira4R
     
     def getProject(key)
       #Jira > 3.10 has been patched to support this method directly as getProjectByKey
-      puts "Using deprecated JIRA4R API call getProject(key); replace with getProjectByKey(key)"
+      @logger.warn("Using deprecated JIRA4R API call getProject(key); replace with getProjectByKey(key)")
       return getProjectByKey(key)
     end
     
@@ -173,7 +173,7 @@ module Jira4R
     
     def findPermission(allowedPermissions, permissionName)
       allowedPermissions.each { |allowedPermission|
-         #puts "Checking #{allowedPermission.name} against #{permissionName} "
+         #@logger.debug("Checking #{allowedPermission.name} against #{permissionName} ")
          return allowedPermission if allowedPermission.name == permissionName
       }
       return nil    
@@ -195,18 +195,18 @@ module Jira4R
       
         allowedPermission = findPermission(allowedPermissions, mapping.permission.name)
         if allowedPermission
-          puts "Already has #{allowedPermission.name} in #{permissionScheme.name} for #{entity.name}"
+          @logger.debug("Already has #{allowedPermission.name} in #{permissionScheme.name} for #{entity.name}")
           allowedPermissions.delete(allowedPermission)
-        next
-      end
+          next
+        end
 
-      puts "Deleting #{mapping.permission.name} from #{permissionScheme.name} for #{entity.name}"
+        @logger.debug("Deleting #{mapping.permission.name} from #{permissionScheme.name} for #{entity.name}")
         deletePermissionFrom( permissionScheme, mapping.permission, entity)
       }
       
-      puts allowedPermissions.inspect
+      @logger.debug(allowedPermissions.inspect)
       allowedPermissions.each { |allowedPermission|
-        puts "Granting #{allowedPermission.name} to #{permissionScheme.name} for #{entity.name}"
+        @logger.debug("Granting #{allowedPermission.name} to #{permissionScheme.name} for #{entity.name}")
         addPermissionTo(permissionScheme, allowedPermission, entity) 
       }   
     end
